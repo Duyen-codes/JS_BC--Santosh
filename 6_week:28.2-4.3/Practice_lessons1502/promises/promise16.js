@@ -10,7 +10,7 @@ It should fail with the following message:
 const failAfter = (milliseconds) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject("You asked me to fail after 1500ms and I did");
+      reject(`You asked me to fail after ${milliseconds}ms and I did`);
     }, milliseconds);
   });
 };
