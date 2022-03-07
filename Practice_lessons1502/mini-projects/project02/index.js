@@ -52,10 +52,34 @@ the app will show the list of GitHub repositories for that user using the GitHub
 /* Write your code here... */
 const form = document.querySelector("form");
 const userInput = document.querySelector("#github-username");
+const reposList = document.querySelector("#repos-list");
 
-form.addEventListener("submit", (e) => {
+const getRepos = (e) => {
   e.preventDefault();
   const API = new FetchWrapper("https://api.github.com/");
 
-  API.get(`users/${userInput.value}/repos`).then((data) => console.log(data));
-});
+  API.get(`users/${userInput.value}/repos`)
+    .then((response) => {
+      console.log(response);
+      response.forEach((item) => {
+        reposList.innerHTML += `<li><a target="_blank" href="${item.html_url}">${item.name}</a></li>`;
+      });
+    })
+    .catch((error) => console.log(error));
+};
+
+form.addEventListener("submit", getRepos);
+
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const API = new FetchWrapper("https://api.github.com/");
+
+//   API.get(`users/${userInput.value}/repos`)
+//     .then((response) => {
+//       console.log(response);
+//       response.forEach((item) => {
+//         reposList.innerHTML += `<li><a href="${item.html_url}">${item.name}</a></li>`;
+//       });
+//     })
+//     .catch((error) => console.log(error));
+// });

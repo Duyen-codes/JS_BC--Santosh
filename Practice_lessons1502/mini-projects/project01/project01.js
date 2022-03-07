@@ -434,22 +434,3 @@ searchInput.addEventListener("keyup", (e) => {
     }
   });
 });
-
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-// });
-
-// searchInput.addEventListener("keyup", () => {
-//   ul.innerHTML = "";
-//   for (let i = 0; i < data.length; i++) {
-//     if (
-//       data[i].spacecraft
-//         .toLowerCase()
-//         .includes(searchInput.value.toLowerCase().trim())
-//     ) {
-//       ul.insertAdjacentHTML("beforeend", `<li>${data[i].spacecraft}</li>`);
-//     }
-//   }
-// });
-
-// form.addEventListener("submit", (e) => e.preventDefault());
