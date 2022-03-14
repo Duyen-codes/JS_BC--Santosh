@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<style>
+  body {
+    min-height: 200px;
+  }
+</style>
+<img
+  src="https://eloquentjavascript.net/img/cat.png"
+  id="cat"
+  style="position: absolute"
+/>
+<img
+  src="https://eloquentjavascript.net/img/hat.png"
+  id="hat"
+  style="position: absolute"
+/>
+
+<script>
+  // Write a JavaScript code to animate cat and it's hat
+  function animate() {
+    document.getElementById("hat").animate(
+      [
+        // keyframes
+        { transform: "translateY(0px)" },
+        { transform: "translateY(-300px)" },
+      ],
+      {
+        // timing options
+        duration: 1000,
+        iterations: Infinity,
+      }
+    );
+  }
+</script>

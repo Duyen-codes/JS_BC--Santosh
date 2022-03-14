@@ -20,8 +20,8 @@ const getTweetDetails = async () => {
 };
 
 // do NOT modify this function
-function showAuthorName(fullName) {
-  console.log(fullName);
+function showAuthorName(placeholder) {
+  console.log(placeholder);
 }
 
 // Sample usage - do not modify
