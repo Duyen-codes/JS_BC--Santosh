@@ -40,6 +40,7 @@ const result = document.querySelector("#conversion-result");
 result.textContent = "1";
 
 baseCurrency.addEventListener("change", getConversionRates);
+targetCurrency.addEventListener("change", getConversionRates);
 
 function getConversionRates() {
   switch (baseCurrency.value) {
@@ -80,10 +81,7 @@ function getConversionRates() {
 }
 
 function displayResult(data) {
-  targetCurrency.addEventListener("change", () => {
-    console.log("target value", targetCurrency.value);
-    result.textContent = data[targetCurrency.value];
-  });
+  result.textContent = data[targetCurrency.value];
 }
 
 //TODO
