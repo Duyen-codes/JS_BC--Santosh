@@ -34,54 +34,74 @@ let api = new FetchWrapper(
   "https://v6.exchangerate-api.com/v6/a1a593067a404e0031b514d1/latest/"
 );
 
-const baseCurrency = document.querySelector("#base-currency");
-const targetCurrency = document.querySelector("#target-currency");
+// const baseCurrency = document.querySelector("#base-currency");
+// const targetCurrency = document.querySelector("#target-currency");
+// const result = document.querySelector("#conversion-result");
+// result.textContent = "1";
+
+// baseCurrency.addEventListener("change", getConversionRates);
+// targetCurrency.addEventListener("change", getConversionRates);
+
+// function getConversionRates() {
+//   switch (baseCurrency.value) {
+//     case "USD":
+//       api.get("USD").then((data) => {
+//         displayResult(data.conversion_rates);
+//         console.log("conversion_rates", data.conversion_rates);
+//       });
+
+//       break;
+
+//     case "EUR":
+//       api.get("EUR");
+//       api.get("EUR").then((data) => {
+//         displayResult(data.conversion_rates);
+//         console.log("conversion_rates", data.conversion_rates);
+//       });
+//       break;
+
+//     case "CAD":
+//       api.get("CAD");
+//       api.get("CAD").then((data) => {
+//         displayResult(data.conversion_rates);
+//         console.log("conversion_rates", data.conversion_rates);
+//       });
+//       break;
+
+//     case "INR":
+//       api.get("INR");
+//       api.get("INR").then((data) => {
+//         displayResult(data.conversion_rates);
+//         console.log("conversion_rates", data.conversion_rates);
+//       });
+//       break;
+//     default:
+//       console.log("sorry no value found");
+//   }
+// }
+
+// function displayResult(data) {
+//   result.textContent = data[targetCurrency.value];
+// }
+
+const base = document.querySelector("#base-currency");
+const target = document.querySelector("#target-currency");
 const result = document.querySelector("#conversion-result");
-result.textContent = "1";
 
-baseCurrency.addEventListener("change", getConversionRates);
-targetCurrency.addEventListener("change", getConversionRates);
+base.addEventListener("change", () => {
+  getConversionRates(base.value);
+});
 
-function getConversionRates() {
-  switch (baseCurrency.value) {
-    case "USD":
-      api.get("USD").then((data) => {
-        displayResult(data.conversion_rates);
-        console.log("conversion_rates", data.conversion_rates);
-      });
+target.addEventListener("change", () => {
+  getConversionRates(base.value);
+});
 
-      break;
-
-    case "EUR":
-      api.get("EUR");
-      api.get("EUR").then((data) => {
-        displayResult(data.conversion_rates);
-        console.log("conversion_rates", data.conversion_rates);
-      });
-      break;
-
-    case "CAD":
-      api.get("CAD");
-      api.get("CAD").then((data) => {
-        displayResult(data.conversion_rates);
-        console.log("conversion_rates", data.conversion_rates);
-      });
-      break;
-
-    case "INR":
-      api.get("INR");
-      api.get("INR").then((data) => {
-        displayResult(data.conversion_rates);
-        console.log("conversion_rates", data.conversion_rates);
-      });
-      break;
-    default:
-      console.log("sorry no value found");
-  }
-}
+const getConversionRates = (baseValue) => {
+  api.get(baseValue).then((data) => displayResult(data.conversion_rates));
+};
 
 function displayResult(data) {
-  result.textContent = data[targetCurrency.value];
+  result.textContent = data[target.value];
 }
 
 //TODO
